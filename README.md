@@ -26,11 +26,10 @@ The agent can:
 - Google Gemini API key
 - Internet connection
 
-> [!WARNING]
-> The `requirements.txt` file in this repository lists `anthropic>=0.40.0`, but this project uses the Google Gemini Python SDK. You should install the actual dependencies manually:
+Install the project dependencies with:
 
 ```bash
-pip install google-genai python-dotenv requests
+pip install -r requirements.txt
 ```
 
 ### Create a virtual environment
@@ -45,9 +44,6 @@ venv\Scripts\activate
 ## 2. Configure the Gemini API Key
 
 Create a `.env` file in the project root.
-
-> [!WARNING]
-> The `.env.example` file in this repository lists `ANTHROPIC_API_KEY` and `ANTHROPIC_MODEL`. However, the actual Gemini implementation in `agent.py` requires `GEMINI_API_KEY` and `GEMINI_MODEL`.
 
 Set the following variables in your `.env` file:
 
