@@ -176,37 +176,48 @@ The important part of the demonstration is that the agent:
 
 The agent follows the ReAct pattern:
 
+```text
 User Query
     |
     v
-+----------------+
-| Gemini LLM     |
-+----------------+
++----------------------+
+|      Gemini LLM      |
+|   Decision Making    |
++----------------------+
     |
     v
-  THOUGHT
++----------------------+
+|       ACTION         |
+|   Select a Tool      |
++----------------------+
     |
     v
-  ACTION
++----------------------+
+|     Python Tool      |
+| get_weather /        |
+| calculate /          |
+| write_file /         |
+| read_file            |
++----------------------+
     |
     v
-+----------------+
-| Python Tool    |
-+----------------+
-    |
-    v
-OBSERVATION
++----------------------+
+|    OBSERVATION       |
+|     Tool Result      |
++----------------------+
     |
     v
 Conversation History
     |
     v
-+----------------+
-| Gemini LLM     |
-+----------------+
++----------------------+
+|      Gemini LLM      |
++----------------------+
     |
-    v
-Next Action OR Final Answer
+    +---------> Next ACTION
+    |
+    +---------> FINAL ANSWER
+```
 
 The loop continues until Gemini provides a final answer or the maximum
 number of steps is reached.
@@ -304,10 +315,11 @@ This allows Gemini to determine how the tool should be called.
 
 Consider:
 
-What's the weather in New York City, and what is 5 factorial?
+`What's the weather in New York City, and what is 5 factorial?`
 
 The agent can reason through the task as:
 
+```text
 User Query
     |
     v
@@ -330,6 +342,7 @@ OBSERVATION: 120
     |
     v
 FINAL ANSWER
+```
 
 This demonstrates sequential use of multiple tools.
 
@@ -423,7 +436,9 @@ The weather in New York City is Sunny, 22C (72F), with 86% humidity. 5 factorial
 This makes the agent's tool-use process visible during execution.
 
 ## 13. Project Structure
-react-agent/
+
+```text
+react-ai-agent-gemini/
 │
 ├── agent.py
 │   └── Gemini ReAct loop and application entry point
@@ -440,11 +455,12 @@ react-agent/
 ├── .env.example
 │   └── Environment variable template
 │
-├── .env
-│   └── Local Gemini API configuration
+├── .gitignore
+│   └── Ignores .env, virtual environments, and Python cache files
 │
 └── README.md
     └── Project documentation
+```
 ## 14. Example Commands
 
 **Basic calculation:**
